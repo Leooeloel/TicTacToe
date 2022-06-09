@@ -7,8 +7,8 @@ apps.clear();
 apps.push({
   kind: App.kind,
   label: App.kind.replace(/([a-z])([A-Z])/g, "$1 $2"),
-  icon: logo,
-  onClick: fastboard => {
+  icon: "https://netless-docs.oss-cn-hangzhou.aliyuncs.com/Leo/WeChatc00e0aa34a57994719c6887727affc04.png",
+  onClick: (fastboard) => {
     fastboard.manager.addApp({ kind: App.kind });
   },
 });

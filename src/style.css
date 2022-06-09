@@ -1,12 +1,71 @@
-.app-hello-world {
+.tic-tac-toe {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.ttt-board {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+}
+
+.ttt-board-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: pink;
+  cursor: pointer;
+}
+
+.ttt-board-cell > svg {
+  fill: red;
+  width: 50%;
+  height: 50%;
+}
+
+.ttt-board.is-readonly .ttt-board-cell,
+.ttt-board-cell.is-taken {
+  cursor: unset;
+}
+
+.ttt-login {
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  background: #ffbe76;
 }
 
-.app-hello-world button {
+.ttt-login-start {
+  border: 0;
+  background: #f0932b;
+  width: 100%;
+  height: 50%;
+  cursor: pointer;
   font-size: 20px;
-  font-family: monospace;
+  color: #fff;
+}
+
+.ttt-winner {
+  position: absolute;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f39c12;
+  color: #fff;
+  font-size: 50px;
 }

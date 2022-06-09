@@ -1,12 +1,9 @@
-import type { RoomState } from "@netless/fastboard";
 import type { AppContext } from "@netless/window-manager";
-
+import type { RoomState } from "white-web-sdk";
 import { useEffect, useMemo, useState } from "react";
 
-/**
- * @example
- * const writable = useWritable(context) // true
- */
+export type MemberIDType = number;
+
 export function useWritable(context: AppContext) {
   const [writable, setWritable] = useState(() => context.getIsWritable());
 
@@ -19,22 +16,13 @@ export function useWritable(context: AppContext) {
   return writable;
 }
 
-/**
- * @example
- * const [counterState, setCounterState] = useStorage(context, "counter", { count: 0 })
- * console.log(counterState) // { count: 0 }
- * setCounterState({ count: 2 })
- */
 export function useStorage<T>(
   context: AppContext,
   namespace: string,
-  defaultState: T | (() => T)
+  defaultState: () => T
 ): [T, (v: Partial<T>) => void] {
   const [storage] = useState(() =>
-    context.createStorage<T>(
-      namespace,
-      typeof defaultState === "function" ? (defaultState as () => T)() : defaultState
-    )
+    context.createStorage<T>(namespace, defaultState())
   );
   const [state, _setState] = useState(storage.state);
   const setState = useMemo(() => storage.setState.bind(storage), [context]);
@@ -50,24 +38,18 @@ export function useStorage<T>(
   return [state, setState];
 }
 
-function pluckMemberId(member: RoomState["roomMembers"][number]): string {
-  return member.payload?.uid || String(member.memberId);
-}
-
-/**
- * @example
- * const members = useMembers(context) // ["user123", "lol233"]
- */
-export function useMembers(context: AppContext): string[] {
+export function useMembers(context: AppContext): MemberIDType[] {
   const [members, setMembers] = useState(() =>
-    context.getDisplayer().state.roomMembers.map(pluckMemberId)
+    context.getDisplayer().state.roomMembers.map((memebr) => memebr.memberId)
   );
 
   useEffect(() => {
     const displayer = context.getDisplayer();
     const handler = (state: Partial<RoomState>) => {
       if (state.roomMembers) {
-        setMembers(displayer.state.roomMembers.map(pluckMemberId));
+        setMembers(
+          displayer.state.roomMembers.map((memebr) => memebr.memberId)
+        );
       }
     };
     displayer.callbacks.on("onRoomStateChanged", handler);
@@ -79,10 +61,6 @@ export function useMembers(context: AppContext): string[] {
   return members;
 }
 
-/**
- * @example
- * const myUID = useMemberID(context) // "user123"
- */
-export function useMemberID(context: AppContext): string {
-  return useMemo(() => context.getRoom()?.uid || "", [context]);
+export function useMemberID(context: AppContext): MemberIDType {
+  return useMemo(() => context.getDisplayer().observerId, [context]);
 }

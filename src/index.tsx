@@ -5,33 +5,27 @@ import { createRoot } from "react-dom/client";
 import { App } from "./components/App";
 import styles from "./style.css?inline";
 
-/**
- * Register it before joining room:
- * ```js
- * WindowManager.register({
- *   kind: "HelloWorld",
- *   src: HelloWorld
- * })
- * ```
- * Then you can use it in your room:
- * ```js
- * manager.addApp({ kind: 'HelloWorld' })
- * ```
- * Read more about how to make a netless app here:
- * https://github.com/netless-io/window-manager/blob/master/docs/develop-app.md
- */
-const HelloWorld: NetlessApp = {
-  kind: "HelloWorld",
+const TicTacToe: NetlessApp = {
+  config: {
+    minwidth: 0.01,
+    minheight: 0.01,
+    width: (9 / 16) * 0.5,
+    height: 0.5,
+  },
+  kind: "TicTacToe",
   setup(context) {
     const box = context.getBox();
+
+    // @todo
+    box._fixRatio$.setValue(true);
+
     box.mountStyles(styles);
 
     const $content = document.createElement("div");
-    $content.className = "app-hello-world";
+    $content.className = "tic-tac-toe";
     box.mountContent($content);
 
     const root = createRoot($content);
-
     root.render(<App context={context} />);
 
     context.emitter.on("destroy", () => {
@@ -40,4 +34,4 @@ const HelloWorld: NetlessApp = {
   },
 };
 
-export default HelloWorld;
+export default TicTacToe;
