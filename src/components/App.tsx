@@ -46,13 +46,15 @@ export function App({ context }: AppProps) {
   const members = useMembers(context);
   const memberID = useMemberID(context);
 
-  const winner = useMemo(() => {
+  const [winner, loser] = useMemo(() => {
     const result = verdict(syncState.board);
     if (!result) {
-      return null;
+      return [null, null];
     }
-    return result === "o" ? syncState.oPlayer : syncState.xPlayer;
-  }, [syncState]);
+    return result === "o"
+      ? [syncState.oPlayer, syncState.xPlayer]
+      : [syncState.xPlayer, syncState.oPlayer];
+  }, [syncState.board, syncState.oPlayer, syncState.xPlayer]);
 
   const readonly = useMemo(() => {
     if (!whiteboardWritable) {
@@ -143,7 +145,9 @@ export function App({ context }: AppProps) {
         />
       )}
       {isShowWaiting && <Waiting />}
-      {winner !== null && <Winner memberID={memberID} winner={winner} />}
+      {(winner !== null || loser !== null) && (
+        <Winner loser={loser} memberID={memberID} winner={winner} />
+      )}
     </div>
   );
 }
