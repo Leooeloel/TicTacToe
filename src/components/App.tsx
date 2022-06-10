@@ -13,6 +13,7 @@ import { verdict } from "./utils";
 import { useEffect } from "react";
 import { Winner } from "./Winner";
 import { Login } from "./Login";
+import { Waiting } from "./Waiting";
 
 export interface SyncState {
   board: BoardProps["board"];
@@ -41,7 +42,7 @@ export function App({ context }: AppProps) {
     })
   );
 
-  const writable = useWritable(context);
+  const whiteboardWritable = useWritable(context);
   const members = useMembers(context);
   const memberID = useMemberID(context);
 
@@ -54,7 +55,7 @@ export function App({ context }: AppProps) {
   }, [syncState]);
 
   const readonly = useMemo(() => {
-    if (!writable) {
+    if (!whiteboardWritable) {
       return true;
     }
     if (syncState.oPlayer && syncState.oPlayer === memberID) {
@@ -69,18 +70,31 @@ export function App({ context }: AppProps) {
     syncState.xPlayer,
     syncState.turn,
     memberID,
-    writable,
+    whiteboardWritable,
   ]);
 
   const isShowLogin = useMemo(() => {
-    if (!writable) {
+    if (!whiteboardWritable) {
       return false;
     }
     if (syncState.oPlayer === memberID || syncState.xPlayer === memberID) {
       return false;
     }
     return !syncState.oPlayer || !syncState.xPlayer;
-  }, [syncState.xPlayer, syncState.oPlayer, memberID, writable]);
+  }, [syncState.xPlayer, syncState.oPlayer, memberID, whiteboardWritable]);
+
+  const isShowWaiting = useMemo(() => {
+    if (winner !== null) {
+      return false;
+    }
+    if (syncState.oPlayer === memberID && !syncState.xPlayer) {
+      return true;
+    }
+    if (syncState.xPlayer === memberID && !syncState.oPlayer) {
+      return true;
+    }
+    return false;
+  }, [syncState.xPlayer, syncState.oPlayer, memberID]);
 
   // useEffect(() => {
   //   if (
@@ -128,6 +142,7 @@ export function App({ context }: AppProps) {
           }}
         />
       )}
+      {isShowWaiting && <Waiting />}
       {winner !== null && <Winner memberID={memberID} winner={winner} />}
     </div>
   );
