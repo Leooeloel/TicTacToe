@@ -9,6 +9,9 @@ apps.push({
   label: App.kind.replace(/([a-z])([A-Z])/g, "$1 $2"),
   icon: "https://netless-docs.oss-cn-hangzhou.aliyuncs.com/Leo/WeChatc00e0aa34a57994719c6887727affc04.png",
   onClick: (fastboard) => {
-    fastboard.manager.addApp({ kind: App.kind });
+    fastboard.manager.addApp({
+      kind: App.kind,
+      options: { title: "TicTacToe" },
+    });
   },
 });

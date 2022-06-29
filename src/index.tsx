@@ -7,15 +7,14 @@ import styles from "./style.css?inline";
 
 const TicTacToe: NetlessApp = {
   config: {
-    minwidth: 0.01,
-    minheight: 0.01,
+    minwidth: 0.3,
+    minheight: 0.3,
     width: (9 / 16) * 0.5,
     height: 0.5,
   },
   kind: "TicTacToe",
   setup(context) {
     const box = context.getBox();
-
     // @todo
     box._fixRatio$.setValue(true);
 

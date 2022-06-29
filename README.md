@@ -1,6 +1,6 @@
 # 项目介绍
 
-本 demo 是基于 [community-apps](https://github.com/netless-io/community-apps) 模版开发的 TicTacToe 互动小游戏
+本 demo 是基于 [community-app-template](https://github.com/netless-io/community-app-template) 模版开发的 TicTacToe 互动小游戏
 
 ![](https://netless-docs.oss-cn-hangzhou.aliyuncs.com/Leo/WechatIMG996.png)
 ## 快速开始
@@ -12,7 +12,7 @@
 
 第三步：下载项目依赖 `npm install`
 
-第四步：[community-apps](https://github.com/netless-io/community-apps) 不同分支提供了多种脚手架，本 demo 是基于 react 开发，切换分支到 react `git checkout react`
+第四步：[community-app-template](https://github.com/netless-io/community-app-template) 不同分支提供了多种脚手架，本 demo 是基于 react 开发
 
 第五步：运行项目 `npm start`
 
