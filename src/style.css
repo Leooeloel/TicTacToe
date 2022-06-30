@@ -18,7 +18,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: pink;
+  background: rgb(60, 171, 78);
   cursor: pointer;
 }
 

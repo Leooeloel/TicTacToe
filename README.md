@@ -2,7 +2,7 @@
 
 本 demo 是基于 [community-app-template](https://github.com/netless-io/community-app-template) 模版开发的 TicTacToe 互动小游戏
 
-![](https://netless-docs.oss-cn-hangzhou.aliyuncs.com/Leo/WechatIMG996.png)
+![](https://netless-docs.oss-cn-hangzhou.aliyuncs.com/Leo/TicTacToe.gif)
 ## 快速开始
 前置条件：至少需要安装了 `git`、`node 16`、`npm 8`
 
