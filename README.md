@@ -23,3 +23,5 @@
  第一步需要先开启互动白板服务，获取互动白板项目的安全密钥，参考 [开启和配置互动白板服务](https://docs.agora.io/cn/whiteboard/enable_whiteboard?platform=Web)
 
 第二步需要获取白板房间 UUID 和 ROOMTOKEN，参考[加入房间](https://docs.agora.io/cn/whiteboard/join_whiteboard_room_web)
+
+也可以通过 [白板临时配置环境](https://workshop.netless.link) 来快速获取白板配置环境
