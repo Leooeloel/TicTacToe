@@ -1,6 +1,6 @@
 # 项目介绍
 
-本 demo 是基于 [community-app-template](https://github.com/netless-io/community-app-template) 模版开发的 TicTacToe 互动小游戏
+本互动插件 TicTacToe 是基于 [community-app-template](https://github.com/netless-io/community-app-template) 模版 React 分支开发的 TicTacToe 互动小游戏
 
 ![](https://netless-docs.oss-cn-hangzhou.aliyuncs.com/Leo/TicTacToe.gif)
 ## 快速开始
@@ -25,3 +25,9 @@
 第二步需要获取白板房间 UUID 和 ROOMTOKEN，参考[加入房间](https://docs.agora.io/cn/whiteboard/join_whiteboard_room_web)
 
 也可以通过 [白板临时配置环境](https://workshop.netless.link) 来快速获取白板配置环境
+
+## 互动骰子 
+
+另外一个插件[互动骰子](https://github.com/Leooeloel/dice) 是基于 [community-app-template](https://github.com/netless-io/community-app-template) 模版原生分支开发的互动骰子小工具，也供大家参考
+
+![](https://netless-docs.oss-cn-hangzhou.aliyuncs.com/Leo/dice.gif)
