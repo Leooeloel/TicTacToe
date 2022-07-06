@@ -1,6 +1,6 @@
 # 项目介绍
 
-本互动插件 TicTacToe 是基于 [community-app-template](https://github.com/netless-io/community-app-template) 模版 React 分支开发的 TicTacToe 互动小游戏
+本插件 TicTacToe 是基于 [community-app-template](https://github.com/netless-io/community-app-template) 模版 React 分支开发的 TicTacToe 互动小游戏
 
 ![](https://netless-docs.oss-cn-hangzhou.aliyuncs.com/Leo/TicTacToe.gif)
 ## 快速开始
@@ -28,6 +28,6 @@
 
 ## 互动骰子 
 
-另外一个插件[互动骰子](https://github.com/Leooeloel/dice) 是基于 [community-app-template](https://github.com/netless-io/community-app-template) 模版原生分支开发的互动骰子小工具，也供大家参考
+另外一个插件 [互动骰子](https://github.com/Leooeloel/dice) 是基于 [community-app-template](https://github.com/netless-io/community-app-template) 模版原生分支开发的互动骰子小工具，也供大家参考
 
 ![](https://netless-docs.oss-cn-hangzhou.aliyuncs.com/Leo/dice.gif)
